@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f2e8">
+  <meta name="description" content="Haute Hustle is a curated digital thrift boutique for one-of-a-kind style.">
+  <title>Haute Hustle — The art of finding it first</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="demo-banner">A college project demo — products, prices, reviews, stock and orders are sample data.</div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Haute Hustle home">HAUTE <span>HUSTLE</span></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+      <button type="button" class="text-button" data-open-auth>Sign in</button>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="ordersButton" type="button" aria-label="View order history" title="Order history">
+        <svg class="orders-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 3.75h7l4 4v12.5H7a2 2 0 0 1-2-2v-12.5a2 2 0 0 1 2-2Z"/>
+          <path d="M14 3.75v4h4M9 12h6M9 16h6"/>
+        </svg>
+      </button>
+      <button class="icon-button" id="wishlistButton" type="button" aria-label="View wishlist" title="Wishlist">♡<span class="count-badge" id="wishlistCount">0</span></button>
+      <button class="icon-button" id="cartButton" type="button" aria-label="Open shopping bag" title="Shopping bag">▱<span class="count-badge" id="cartCount">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">CURATED SECOND-HAND · ONE OF A KIND</p>
+        <h1>Good style<br>has a <em>past.</em></h1>
+        <p class="hero-description">A considered edit of pre-loved pieces, chosen for the details you won't find twice.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#shop">Shop the edit <span aria-hidden="true">↗</span></a>
+          <a class="quiet-link" href="#about">Our point of view</a>
+        </div>
+        <div class="hero-note"><span class="note-mark">✳</span><span><strong>Wear it again.</strong><br>Every piece gets a second story.</span></div>
+      </div>
+      <div class="hero-visual" role="img" aria-label="A curated collection of vintage fashion pieces">
+        <div class="hero-caption"><span>THE HAUTE HUSTLE EDIT</span><strong>Found, not followed.</strong></div>
+      </div>
+      <div class="hero-index" aria-hidden="true">01 / HH</div>
+    </section>
+
+    <section class="values-strip" aria-label="Our promises">
+      <div><span>01</span><strong>One-off finds</strong><small>Curated, never mass made</small></div>
+      <div><span>02</span><strong>More life, less waste</strong><small>Pre-loved looks good on you</small></div>
+      <div><span>03</span><strong>Demo checkout</strong><small>No real payments or credentials</small></div>
+    </section>
+
+    <section class="shop section-wrap" id="shop">
+      <div class="section-heading shop-heading">
+        <div>
+          <p class="eyebrow">THE CURRENT EDIT</p>
+          <h2>Find your <em>forever piece.</em></h2>
+          <p class="section-intro">Distinct finds across dresses, jeans, trousers, tops, jackets and more—each with its own size and condition.</p>
+        </div>
+        <label class="search-field">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Search the edit" autocomplete="off" aria-label="Search products">
+          <kbd>⌘ K</kbd>
+        </label>
+      </div>
+
+      <div class="category-browser">
+        <div class="category-browser-heading">
+          <p class="eyebrow">BROWSE THE RAILS</p>
+          <span>Choose a category to see its pieces</span>
+        </div>
+        <div class="category-tiles" id="categoryTiles" aria-label="Shop by category"></div>
+      </div>
+
+      <div class="shop-controls">
+        <div class="filter-group">
+          <label>Category
+            <select id="categoryFilter">
+              <option value="all">All pieces</option>
+              <option value="tops">Tops & shirts</option>
+              <option value="dresses">Dresses</option>
+              <option value="jackets">Jackets</option>
+              <option value="jeans">Jeans</option>
+              <option value="trousers">Trousers</option>
+              <option value="skirts">Skirts</option>
+              <option value="sweaters">Sweaters</option>
+              <option value="shoes">Shoes</option>
+              <option value="accessories">Accessories</option>
+              <option value="vintage">Vintage</option>
+            </select>
+          </label>
+          <label>Price
+            <select id="priceFilter">
+              <option value="all">Any price</option>
+              <option value="under-800">Under ₹800</option>
+              <option value="800-1500">₹800–₹1,500</option>
+              <option value="over-1500">Over ₹1,500</option>
+            </select>
+          </label>
+          <label>Condition
+            <select id="conditionFilter">
+              <option value="all">Any condition</option>
+              <option value="Like new">Like new</option>
+              <option value="Excellent">Excellent</option>
+              <option value="Good">Good</option>
+              <option value="Vintage">Vintage</option>
+            </select>
+          </label>
+        </div>
+        <label class="sort-control">Sort by
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+            <option value="name">Name: A to Z</option>
+            <option value="rating">Top rated</option>
+          </select>
+        </label>
+      </div>
+      <div class="catalog-meta"><p id="resultCount" aria-live="polite"></p><button id="clearFilters" class="quiet-link" type="button">Clear filters</button></div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <p class="empty-state" id="emptyState" hidden>No pieces match those filters. Try another search.</p>
+      <p class="sample-note">All catalogue listings and customer ratings shown here are fictional demo data.</p>
+    </section>
+
+    <section class="editorial section-wrap" id="about">
+      <div class="editorial-image" role="img" aria-label="A fashion editorial celebrating second-hand style"></div>
+      <div class="editorial-copy">
+        <p class="eyebrow">A DIFFERENT KIND OF NEW</p>
+        <h2>Not new.<br><em>New to you.</em></h2>
+        <p>Haute Hustle is a college project exploring how an Instagram-first thrift store could feel: personal, considered and a little unexpected.</p>
+        <p>Every sample listing is a one-off demo. We believe the best wardrobe is the one that tells your story, not the one that follows every trend.</p>
+        <a class="quiet-link" href="#shop">Explore the edit <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <section class="contact-section section-wrap" id="contact">
+      <div class="contact-copy">
+        <p class="eyebrow">SAY HELLO</p>
+        <h2>Good finds.<br><em>Good conversations.</em></h2>
+        <p>Questions about the project or a sample piece? Send us a note. This demo form does not send data to a server.</p>
+        <div class="contact-detail"><span>✳</span><span>Haute Hustle Studio<br><small>Demo storefront · India</small></span></div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <label>Your name<input name="name" required maxlength="80" autocomplete="name" placeholder="Name"></label>
+          <label>Email address<input name="email" type="email" required maxlength="120" autocomplete="email" placeholder="you@example.com"></label>
+        </div>
+        <label>Subject<input name="subject" required maxlength="120" placeholder="What would you like to know?"></label>
+        <label>Your message<textarea name="message" rows="4" required maxlength="1200" placeholder="Write a little note..."></textarea></label>
+        <button class="button button-dark" type="submit">Send a demo message <span aria-hidden="true">↗</span></button>
+        <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div><a class="brand brand-footer" href="#home">HAUTE <span>HUSTLE</span></a><p>Found with feeling.<br>Worn with intention.</p></div>
+      <div class="footer-links"><a href="#shop">Shop the edit</a><a href="#about">About Haute Hustle</a><a href="#contact">Contact</a></div>
+      <div class="footer-statement">SECOND-HAND.<br><em>FIRST CHOICE.</em></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Haute Hustle · College project demonstration</span><span>All products, reviews and orders are fictional sample data.</span></div>
+  </footer>
+
+  <div class="overlay" id="cartOverlay" hidden>
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="drawer-heading"><div><p class="eyebrow">YOUR EDIT</p><h2 id="cartTitle">Shopping bag <span id="cartTitleCount"></span></h2></div><button class="close-button" type="button" data-close-overlay aria-label="Close bag">×</button></div>
+      <div class="drawer-body" id="cartItems"></div>
+      <div class="drawer-footer">
+        <div class="coupon-row"><input id="couponInput" type="text" maxlength="20" placeholder="Coupon code" aria-label="Coupon code"><button class="button button-outline" id="applyCoupon" type="button">Apply</button></div>
+        <p class="form-status" id="couponStatus" role="status"></p>
+        <div class="summary-line"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+        <div class="summary-line"><span>Discount</span><span id="cartDiscount">−₹0</span></div>
+        <div class="summary-line"><span>Shipping</span><span id="cartShipping">₹0</span></div>
+        <div class="summary-total"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+        <p class="shipping-hint" id="shippingHint"></p>
+        <button class="button button-dark button-full" id="checkoutButton" type="button">Continue to demo checkout <span aria-hidden="true">↗</span></button>
+        <p class="payment-disclaimer">Simulated checkout only. No payment credentials are requested or processed.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="overlay" id="wishlistOverlay" hidden>
+    <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="wishlistTitle">
+      <div class="drawer-heading"><div><p class="eyebrow">SAVED FOR LATER</p><h2 id="wishlistTitle">Your wishlist</h2></div><button class="close-button" type="button" data-close-overlay aria-label="Close wishlist">×</button></div>
+      <div class="drawer-body" id="wishlistItems"></div>
+    </aside>
+  </div>
+
+  <div class="overlay modal-overlay" id="productOverlay" hidden>
+    <section class="product-modal" role="dialog" aria-modal="true" aria-labelledby="detailName">
+      <button class="close-button modal-close" type="button" data-close-overlay aria-label="Close product details">×</button>
+      <div class="detail-image"><img id="detailImage" src="" alt=""></div>
+      <div class="detail-copy">
+        <p class="eyebrow" id="detailCategory"></p><span class="condition-pill" id="detailCondition"></span>
+        <h2 id="detailName"></h2><p class="detail-price" id="detailPrice"></p>
+        <p class="detail-description" id="detailDescription"></p>
+        <p class="detail-rating" id="detailRating"></p>
+        <label class="size-select-label">Choose size<select id="detailSize"></select></label>
+        <button class="button button-dark button-full" id="detailAddButton" type="button">Add to bag</button>
+        <p class="payment-disclaimer">One-off demo listing. Size and stock are sample data.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="overlay modal-overlay" id="checkoutOverlay" hidden>
+    <section class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <button class="close-button modal-close" type="button" data-close-overlay aria-label="Close checkout">×</button>
+      <div id="checkoutFormView">
+        <p class="eyebrow">A FEW LAST DETAILS</p><h2 id="checkoutTitle">Demo <em>checkout.</em></h2>
+        <p class="payment-disclaimer">This is a simulation for a college project. Never enter real financial credentials. No money is charged.</p>
+        <form id="checkoutForm" novalidate>
+          <div class="checkout-layout">
+            <div class="checkout-fields">
+              <h3>Delivery details</h3>
+              <label>Full name<input name="fullName" required maxlength="80" autocomplete="name"></label>
+              <div class="form-row"><label>Email<input name="email" type="email" required maxlength="120" autocomplete="email"></label><label>Mobile number<input name="phone" type="tel" required inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10 digits"></label></div>
+              <label>Street address<textarea name="address" required maxlength="250" rows="2" autocomplete="street-address"></textarea></label>
+              <div class="form-row"><label>City<input name="city" required maxlength="80" autocomplete="address-level2"></label><label>PIN code<input name="pin" required inputmode="numeric" maxlength="6" autocomplete="postal-code" placeholder="6 digits"></label></div>
+              <h3>Demo payment method</h3>
+              <div class="payment-options">
+                <label><input type="radio" name="paymentMethod" value="upi" checked><span><strong>UPI</strong><small>Google Pay · PhonePe · Paytm</small></span></label>
+                <label><input type="radio" name="paymentMethod" value="card"><span><strong>Credit / debit card</strong><small>Visa · Mastercard · RuPay — no card details needed</small></span></label>
+                <label><input type="radio" name="paymentMethod" value="cod"><span><strong>Cash on delivery</strong><small>Demo selection only</small></span></label>
+                <label><input type="radio" name="paymentMethod" value="netbanking"><span><strong>Net banking</strong><small>Choose a demo bank; no login details</small></span></label>
+                <label><input type="radio" name="paymentMethod" value="wallet"><span><strong>Demo wallet</strong><small>Simulated balance; no account linked</small></span></label>
+              </div>
+              <label id="paymentProviderWrap">Demo provider<select id="paymentProvider" name="paymentProvider"></select></label>
+              <p class="payment-disclaimer">No UPI ID, card number, CVV, bank password or wallet credential is collected or transmitted.</p>
+              <p class="form-status" id="checkoutStatus" role="status" aria-live="polite"></p>
+            </div>
+            <aside class="checkout-summary"><h3>Order summary</h3><div id="checkoutItems"></div><div class="summary-line"><span>Subtotal</span><span id="checkoutSubtotal">₹0</span></div><div class="summary-line"><span>Discount</span><span id="checkoutDiscount">−₹0</span></div><div class="summary-line"><span>Shipping</span><span id="checkoutShipping">₹0</span></div><div class="summary-total"><span>Total</span><strong id="checkoutTotal">₹0</strong></div><button class="button button-dark button-full" type="submit">Place demo order <span aria-hidden="true">↗</span></button></aside>
+          </div>
+        </form>
+      </div>
+      <div class="order-success" id="orderSuccess" hidden>
+        <span class="success-mark">✓</span><p class="eyebrow">DEMO ORDER CONFIRMED</p><h2>That's a <em>wrap.</em></h2><p id="successOrderText"></p><p>No payment was taken. This confirmation and order history are stored locally for this demo.</p><button class="button button-dark" id="finishOrderButton" type="button">Back to the edit</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="overlay modal-overlay" id="authOverlay" hidden>
+    <section class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button class="close-button modal-close" type="button" data-close-overlay aria-label="Close account form">×</button>
+      <p class="eyebrow">YOUR HAUTE HUSTLE</p><h2 id="authTitle">Welcome <em>back.</em></h2>
+      <p class="payment-disclaimer">This demo profile is for this browser only. Use a demo-only passphrase; never use your real password.</p>
+      <div class="auth-tabs"><button type="button" class="active" data-auth-mode="login">Sign in</button><button type="button" data-auth-mode="register">Create account</button></div>
+      <form id="authForm">
+        <label id="authNameWrap" hidden>Your name<input name="name" maxlength="80" autocomplete="name"></label>
+        <label>Email<input name="email" type="email" required maxlength="120" autocomplete="email"></label>
+        <label>Demo-only passphrase<input name="demoPassphrase" type="password" required minlength="8" autocomplete="new-password" placeholder="8 characters minimum"></label>
+        <button class="button button-dark button-full" id="authSubmit" type="submit">Sign in to demo</button>
+        <p class="form-status" id="authStatus" role="status" aria-live="polite"></p>
+      </form>
+      <p class="auth-admin-access">Store administrator? <a href="admin/login.php">Admin login</a></p>
+    </section>
+  </div>
+
+  <div class="overlay modal-overlay" id="ordersOverlay" hidden>
+    <section class="orders-modal" role="dialog" aria-modal="true" aria-labelledby="ordersTitle">
+      <button class="close-button modal-close" type="button" data-close-overlay aria-label="Close order history">×</button>
+      <p class="eyebrow">ORDER HISTORY</p><h2 id="ordersTitle">Your <em>orders.</em></h2><div id="orderHistory"></div>
+      <section class="order-tracking-view" id="orderTrackingView" hidden aria-labelledby="trackingTitle">
+        <button class="tracking-back" id="trackingBackButton" type="button">← All orders</button>
+        <div class="tracking-heading"><div><p class="eyebrow">DEMO ORDER TRACKING</p><h3 id="trackingTitle"></h3></div><span class="tracking-status" id="trackingStatus"></span></div>
+        <div class="tracking-reference-row"><span>Tracking reference</span><strong id="trackingReference"></strong></div>
+        <ol class="tracking-timeline" id="trackingTimeline"></ol>
+        <p class="payment-disclaimer" id="trackingNote"></p>
+      </section>
+      <p class="payment-disclaimer">Order history on this device is saved in this browser. Tracking is simulated every 10 seconds; no live carrier updates or real payments are provided.</p>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
